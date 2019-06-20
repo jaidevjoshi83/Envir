@@ -1,5 +1,4 @@
 import glob 
-
 import pandas as pd
 
 def convert24(str1): 
@@ -16,7 +15,7 @@ def return_time(in_file):
     file = open(in_file)
     lines = file.readlines()
 
-    if 'PM' in lines[2].split(',')[0]:
+    if ('PM' in lines[2].split(',')[0]) or ('AM' in lines[2].split(',')[0]):
         my_str = lines[2].split(',')[0].split(' ')[1]+' PM'
         return convert24(my_str)+' PM'
     else:
