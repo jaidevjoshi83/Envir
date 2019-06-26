@@ -26,27 +26,21 @@ Start  = pd.DataFrame(Start,columns=['names','seconds','time'])
 Start =  Start.sort_values(by=["seconds"],ascending=False)
 ends = pd.DataFrame(ends,columns=['names','seconds','time'])
 ends = ends.sort_values(by=["seconds"],ascending=False)
-
 Start_val = Start.values.tolist()[0][2]
 end_val = ends.values.tolist()[ends.shape[0]-1][2]
-
 
 for f in fs:
 
     av_file = open(f)
     lines  = av_file.readlines()
-    for s,line in enumerate(lines[1:]):
 
+    for s,line in enumerate(lines[1:]):
         if float(Start_val.split(':')[0])==float(line1.split(',')[1] ) and float(Start_val.split(':')[1])==float(line.split(',')[2]): 
             break
      
     for e,line in enumerate(lines[1:]):
-
         if float(end_val.split(':')[0])==float(line.split(',')[1] ) and float(end_val.split(':')[1])==float(line.split(',')[2]): 
             break
-
-    #print s
-    #print e
 
     if not os.path.exists('Corrected_data_files'):
         os.makedirs('Corrected_data_files')
